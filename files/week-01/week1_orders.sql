@@ -1,7 +1,7 @@
--- Zero to Data Analyst · Week 1 · orders table (40 orders, August 2026)
+-- Zero to Data Analyst · Week 1 · orders table (40 orders, August 2026, amounts in pounds)
 -- Works in MySQL 8 and MariaDB. Open MySQL Workbench, paste this whole file, run it (lightning icon).
 -- The city column is case-sensitive on purpose (utf8mb4_bin), like most databases,
--- so 'Mumbai' and 'mumbai' count as two different values.
+-- so 'London' and 'london' count as two different values.
 
 CREATE DATABASE IF NOT EXISTS zero_to_analyst;
 USE zero_to_analyst;
@@ -9,55 +9,55 @@ USE zero_to_analyst;
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
   order_id      INT PRIMARY KEY,         -- ID: one per order, never repeats
-  customer_id   INT NOT NULL,            -- ID: one per customer (two Priya Sharmas = 17 and 58)
+  customer_id   INT NOT NULL,            -- ID: one per customer (two Ravi Kumars = 17 and 58)
   customer_name VARCHAR(60) NOT NULL,    -- text
   city          VARCHAR(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,  -- text, typed by hand (messy!)
   order_date    DATE NOT NULL,           -- date
   category      VARCHAR(30) NOT NULL,    -- text
-  amount        DECIMAL(10,2) NOT NULL   -- number (rupees), so SQL can add it up
+  amount        DECIMAL(10,2) NOT NULL   -- number (pounds), so SQL can add it up
 );
 
 INSERT INTO orders (order_id, customer_id, customer_name, city, order_date, category, amount) VALUES
-(1001, 17, 'Priya Sharma', 'Mumbai', '2026-08-03', 'Electronics', 1299.00),
-(1002, 42, 'Rahul Verma', 'Delhi', '2026-08-05', 'Books', 499.00),
-(1003, 58, 'Priya Sharma', 'Pune', '2026-08-09', 'Clothing', 2150.00),
-(1004, 17, 'Priya Sharma', 'mumbai', '2026-08-12', 'Home', 799.00),
-(1005, 23, 'Ananya Iyer', 'Chennai', '2026-08-12', 'Home', 299.00),
-(1006, 31, 'Arjun Reddy', 'Hyderabad', '2026-08-12', 'Home', 349.00),
-(1007, 36, 'Sneha Patil', 'Mumbai', '2026-08-13', 'Electronics', 999.00),
-(1008, 45, 'Karan Mehta', 'Delhi', '2026-08-13', 'Books', 2150.00),
-(1009, 49, 'Fatima Khan', 'Bengaluru', '2026-08-16', 'Electronics', 499.00),
-(1010, 52, 'Rohan Das', 'Kolkata', '2026-08-16', 'Clothing', 1199.00),
-(1011, 61, 'Meera Nair', 'Bengaluru', '2026-08-17', 'Books', 3499.00),
-(1012, 64, 'Vikram Singh', 'MUMBAI', '2026-08-17', 'Beauty', 3499.00),
-(1013, 70, 'Divya Rao', 'Hyderabad', '2026-08-18', 'Home', 349.00),
-(1014, 17, 'Priya Sharma', 'Mumbai', '2026-08-20', 'Beauty', 449.00),
-(1015, 58, 'Priya Sharma', 'Pune', '2026-08-20', 'Beauty', 1199.00),
-(1016, 42, 'Rahul Verma', 'Delhi', '2026-08-20', 'Books', 1199.00),
-(1017, 36, 'Sneha Patil', 'Mumbai', '2026-08-21', 'Clothing', 299.00),
-(1018, 64, 'Vikram Singh', ' Mumbai', '2026-08-21', 'Books', 299.00),
-(1019, 23, 'Ananya Iyer', 'Chennai', '2026-08-22', 'Electronics', 649.00),
-(1020, 31, 'Arjun Reddy', 'Hyderabad', '2026-08-23', 'Groceries', 1199.00),
-(1021, 49, 'Fatima Khan', 'Bengaluru', '2026-08-23', 'Clothing', 899.00),
-(1022, 61, 'Meera Nair', 'Bengaluru', '2026-08-23', 'Groceries', 999.00),
-(1023, 70, 'Divya Rao', 'Hyderabad', '2026-08-23', 'Beauty', 349.00),
-(1024, 45, 'Karan Mehta', 'Delhi', '2026-08-24', 'Home', 1799.00),
-(1025, 52, 'Rohan Das', 'Kolkata', '2026-08-24', 'Beauty', 199.00),
-(1026, 17, 'Priya Sharma', 'Mumbai', '2026-08-24', 'Groceries', 3499.00),
-(1027, 36, 'Sneha Patil', 'Mumbai', '2026-08-25', 'Clothing', 799.00),
-(1028, 64, 'Vikram Singh', 'mumbai', '2026-08-26', 'Books', 1499.00),
-(1029, 58, 'Priya Sharma', 'Pune', '2026-08-27', 'Books', 1299.00),
-(1030, 23, 'Ananya Iyer', 'Chennai', '2026-08-29', 'Books', 449.00),
-(1031, 42, 'Rahul Verma', 'Delhi', '2026-08-29', 'Electronics', 349.00),
-(1032, 49, 'Fatima Khan', 'Bengaluru', '2026-08-29', 'Books', 1299.00),
-(1033, 31, 'Arjun Reddy', 'Hyderabad', '2026-08-30', 'Clothing', 349.00),
-(1034, 61, 'Meera Nair', 'Bengaluru', '2026-08-30', 'Electronics', 1299.00),
-(1035, 70, 'Divya Rao', 'Hyderabad', '2026-08-30', 'Electronics', 599.00),
-(1036, 36, 'Sneha Patil', 'Mumbai', '2026-08-30', 'Clothing', 999.00),
-(1037, 64, 'Vikram Singh', 'Mumbai', '2026-08-31', 'Electronics', 349.00),
-(1038, 17, 'Priya Sharma', 'Mumbai', '2026-08-31', 'Electronics', 1199.00),
-(1039, 52, 'Rohan Das', 'Kolkata', '2026-08-31', 'Groceries', 1799.00),
-(1040, 45, 'Karan Mehta', 'Delhi', '2026-08-31', 'Clothing', 199.00);
+(1001, 17, 'Ravi Kumar', 'London', '2026-08-03', 'Electronics', 12.99),
+(1002, 42, 'Priya Shah', 'Leeds', '2026-08-05', 'Books', 4.50),
+(1003, 58, 'Ravi Kumar', 'Leicester', '2026-08-09', 'Clothing', 21.50),
+(1004, 17, 'Ravi Kumar', 'london', '2026-08-12', 'Home', 7.99),
+(1005, 23, 'Aisha Khan', 'Bristol', '2026-08-14', 'Beauty', 15.00),
+(1006, 31, 'Tom Hughes', 'Manchester', '2026-08-14', 'Groceries', 3.99),
+(1007, 36, 'Sophie Clarke', 'London', '2026-08-14', 'Electronics', 14.50),
+(1008, 45, 'Arjun Mehta', 'Birmingham', '2026-08-15', 'Electronics', 15.00),
+(1009, 49, 'Emily Ward', 'Glasgow', '2026-08-15', 'Groceries', 29.99),
+(1010, 52, 'Daniel Price', 'Cardiff', '2026-08-18', 'Groceries', 12.99),
+(1011, 61, 'Fatima Ali', 'LONDON', '2026-08-18', 'Electronics', 18.99),
+(1012, 64, 'Oliver Bennett', 'London', '2026-08-18', 'Books', 7.99),
+(1013, 70, 'Neha Patel', 'Leeds', '2026-08-19', 'Electronics', 14.50),
+(1014, 17, 'Ravi Kumar', 'London', '2026-08-19', 'Clothing', 21.50),
+(1015, 58, 'Ravi Kumar', 'Leicester', '2026-08-21', 'Books', 39.99),
+(1016, 42, 'Priya Shah', 'Leeds', '2026-08-21', 'Beauty', 21.50),
+(1017, 36, 'Sophie Clarke', 'London', '2026-08-21', 'Electronics', 15.00),
+(1018, 64, 'Oliver Bennett', ' London', '2026-08-22', 'Books', 18.99),
+(1019, 23, 'Aisha Khan', 'Bristol', '2026-08-22', 'Home', 39.99),
+(1020, 31, 'Tom Hughes', 'Manchester', '2026-08-23', 'Beauty', 39.99),
+(1021, 49, 'Emily Ward', 'Glasgow', '2026-08-23', 'Home', 7.99),
+(1022, 61, 'Fatima Ali', 'London', '2026-08-24', 'Groceries', 4.50),
+(1023, 70, 'Neha Patel', 'Leeds', '2026-08-24', 'Clothing', 4.50),
+(1024, 45, 'Arjun Mehta', 'Birmingham', '2026-08-24', 'Books', 9.99),
+(1025, 52, 'Daniel Price', 'Cardiff', '2026-08-24', 'Electronics', 34.99),
+(1026, 17, 'Ravi Kumar', 'London', '2026-08-25', 'Home', 29.99),
+(1027, 36, 'Sophie Clarke', 'london', '2026-08-25', 'Clothing', 49.99),
+(1028, 64, 'Oliver Bennett', 'London', '2026-08-26', 'Clothing', 12.99),
+(1029, 58, 'Ravi Kumar', 'Leicester', '2026-08-28', 'Groceries', 4.50),
+(1030, 23, 'Aisha Khan', 'Bristol', '2026-08-29', 'Beauty', 29.99),
+(1031, 42, 'Priya Shah', 'Leeds', '2026-08-30', 'Home', 14.50),
+(1032, 49, 'Emily Ward', 'Glasgow', '2026-08-30', 'Electronics', 21.50),
+(1033, 31, 'Tom Hughes', 'Manchester', '2026-08-30', 'Beauty', 24.99),
+(1034, 61, 'Fatima Ali', 'London', '2026-08-30', 'Clothing', 9.99),
+(1035, 70, 'Neha Patel', 'Leeds', '2026-08-30', 'Home', 7.99),
+(1036, 36, 'Sophie Clarke', 'London', '2026-08-31', 'Home', 49.99),
+(1037, 64, 'Oliver Bennett', 'London', '2026-08-31', 'Books', 6.99),
+(1038, 17, 'Ravi Kumar', 'London', '2026-08-31', 'Books', 4.50),
+(1039, 52, 'Daniel Price', 'Cardiff', '2026-08-31', 'Electronics', 14.50),
+(1040, 45, 'Arjun Mehta', 'Birmingham', '2026-08-31', 'Books', 4.50);
 
 -- Check it worked: you should see 40.
 SELECT COUNT(*) AS total_rows FROM orders;

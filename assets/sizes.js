@@ -11,8 +11,8 @@ window.SIZES = {
  "files/pack-02/orders.csv": "76 KB",
  "files/pack-02/sales_db_02.sql": "142 KB",
  "files/roadmap/Zero_to_Data_Analyst_Season1_Roadmap.pdf": "180 KB",
- "files/week-01/Week1_Find_All_Five.pdf": "111 KB",
- "files/week-01/Week1_all_files.zip": "101 KB",
+ "files/week-01/Week1_Find_All_Five.pdf": "83 KB",
+ "files/week-01/Week1_all_files.zip": "72 KB",
  "files/week-01/week1_orders.csv": "2 KB",
  "files/week-01/week1_orders.sql": "4 KB"
 };
