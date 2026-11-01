@@ -4,6 +4,7 @@
    Weeks unlock by date on their own; nothing else needs changing. */
 window.SITE = {
   seasonStart: Date.UTC(2026, 10, 2, 0, 0, 0),          // Mon 2 Nov 2026, 00:00 UK time (GMT)
+  week1Opens: Date.UTC(2026, 10, 1, 21, 0, 0),          // Week 1 opened early: Sun 1 Nov 2026, 21:00 UK time (weeks 2-12 keep their Monday dates)
   instagram: 'https://www.instagram.com/analytixai_/',
   instagramDM: 'https://ig.me/m/analytixai_',
   linkedin: 'https://www.linkedin.com/in/kurma-ravishankar',

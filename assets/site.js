@@ -14,10 +14,12 @@
 
   /* ---- dates ---- */
   const now = () => Date.now();
-  const unlocked = () => { const t = now() - S.seasonStart; return t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK) + 1); };
+  const unlocked = () => { const t = now() - S.seasonStart; const u = t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK) + 1);
+    return Math.max(u, S.week1Opens && now() >= S.week1Opens ? 1 : 0); };   // week 1 can open early (SITE.week1Opens)
   const weekDate = n => new Date(S.seasonStart + (n - 1) * WEEK);
   const fmt = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Europe/London' }).replace(',', '');
   const daysTo = d => Math.max(0, Math.ceil((d - now()) / DAY));
+  const toGo = d => d === 0 ? 'Opens today' : d === 1 ? '1 day to go' : d + ' days to go';
   const KEY = 'zda2026';
   function dec(s) { const b = Uint8Array.from(atob(s), c => c.charCodeAt(0)); for (let k = 0; k < b.length; k++) b[k] ^= KEY.charCodeAt(k % KEY.length); return JSON.parse(new TextDecoder().decode(b)); }
   const info = w => (w.n <= unlocked() && window.WEEK_ENC) ? dec(window.WEEK_ENC[w.n - 1]) : null;
@@ -52,7 +54,7 @@
           <div class="top"><b>WEEK ${String(w.n).padStart(2, '0')}</b><span>Unlocks ${date}</span></div>
           <div class="body">${modChips(w)}<h3>${w.n === u + 1 ? 'Next up' : 'Locked'}</h3>
             <p class="lockline">${ICON.lock}Episodes, dataset and files open on ${date}.</p>
-            <div class="foot">${projTag(w)}<span class="muted" style="font-size:14px">${w.n === u + 1 ? daysTo(weekDate(w.n)) + ' days to go' : ''}</span></div></div></article>`;
+            <div class="foot">${projTag(w)}<span class="muted" style="font-size:14px">${w.n === u + 1 ? toGo(daysTo(weekDate(w.n))) : ''}</span></div></div></article>`;
       const files = w.files.length ? `<ul class="files">${w.files.map(fileRow).join('')}</ul>` :
         `<p class="lockline">${ICON.dl}Files for this week land here as each episode drops.</p>`;
       return `<article class="card wk${w.n === u ? ' now' : ''}" id="week-${w.n}" style="--mc:${mc}">
