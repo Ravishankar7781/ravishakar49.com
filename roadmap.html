@@ -256,7 +256,11 @@ footer b{font:800 15px var(--display);color:var(--ink)}
 // Weeks unlock by date: Week 1 opens on SEASON_START (00:00 UK time), then one more week every 7 days.
 const SEASON_START = Date.UTC(2026, 10, 2, 0, 0, 0);   // Mon 2 Nov 2026 (UK is on GMT then)
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
-const unlockedNow = () => { const t = Date.now() - SEASON_START; return t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK_MS) + 1); };
+const WEEK1_OPENS = Date.UTC(2026, 10, 1, 21, 0, 0);  // Week 1 opened early: Sun 1 Nov, 21:00 UK time
+const EP_H = [0, 61.5, 109.5];                          // Ep 1 with its week, Ep 2 Wed 13:30, Ep 3 Fri 13:30 UK
+const unlockedNow = () => { const t = Date.now() - SEASON_START; const u = t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK_MS) + 1); return Math.max(u, Date.now() >= WEEK1_OPENS ? 1 : 0); };
+const epOpen = (i, k) => i < UNLOCKED_WEEKS && (k === 0 || Date.now() >= SEASON_START + i * WEEK_MS + EP_H[k] * 3600e3);   // i = week index, k = 0..2
+const epDay = (i, k) => new Date(SEASON_START + i * WEEK_MS + EP_H[k] * 3600e3).toLocaleDateString('en-GB', {weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Europe/London'}).replace(',', '');
 let UNLOCKED_WEEKS = unlockedNow();
 // Topics are stored encoded and decoded only for open weeks; locked weeks show placeholder text of the same shape.
 const MODULES = [
@@ -313,9 +317,9 @@ function render(){
         <span class="in" style="display:block">
           <span class="mods">${w.m.map(k=>`<span class="mod" style="--mc:var(--m${k})">${MODULES[k-1].n}</span>`).join('')}</span>
           <h3 class="${b}"${hid}>${w.t}</h3>
-          <p class="topic ${b}"${hid}>${w.topic}</p>
+          <p class="topic ${open && epOpen(i, 2) ? '' : 'blur'}"${open && epOpen(i, 2) ? '' : ' aria-hidden="true"'}>${w.topic}</p>
           ${open?'':`<span class="sr">Hidden until Episode ${a}</span>`}
-          <span class="proj"><span class="tag${(w.pf || w.k==='capstone')?' pf':''}">${tagOf(w)}</span><span class="${b}"${hid}>${w.e[2]}</span></span>
+          <span class="proj"><span class="tag${(w.pf || w.k==='capstone')?' pf':''}">${tagOf(w)}</span><span class="${open && epOpen(i, 2) ? '' : 'blur'}"${open && epOpen(i, 2) ? '' : ' aria-hidden="true"'}>${w.e[2]}</span></span>
         </span>
       </button>`;
     ol.appendChild(li);
@@ -410,8 +414,9 @@ function openWeek(i){
   $('sh-title').textContent = open ? w.t : `Week ${i+1} is locked`;
   const labels = ['Lesson', 'Lesson', tagOf(w)];
   $('sh-eps').innerHTML = [a,b,c].map((e,k)=>`<li><span class="ep">Ep ${pad(e)}<small>${labels[k]}</small></span>`+
-    `<span class="what${blur}"${open?'':' aria-hidden="true"'}>${w.e[k]}${k===2 && w.s ? `<small class="sub">${w.s}</small>` : ''}</span></li>`).join('');
-  $('sh-status').innerHTML = open ? `<span>Unlocked. Watch Ep ${a}–${c} and build the project.</span>`
+    `<span class="what${epOpen(i, k) ? '' : ' blur'}"${epOpen(i, k)?'':' aria-hidden="true"'}>${w.e[k]}${k===2 && w.s ? `<small class="sub">${w.s}</small>` : ''}</span></li>`).join('');
+  const nextK = [1, 2].find(k => !epOpen(i, k));
+  $('sh-status').innerHTML = open ? (nextK ? `<span>${nextK === 2 ? `Ep ${pad(a)} and ${pad(b)} are out` : `Ep ${pad(a)} is out`}. Ep ${pad(a + nextK)} drops ${epDay(i, nextK)}.</span>` : `<span>Unlocked. Watch Ep ${a}–${c} and build the project.</span>`)
     : `${LOCK}<span>Unlocks with <b>Episode ${a}</b>. Every topic stays hidden until then.</span>`;
   lastFocus = document.activeElement; document.body.classList.add('open'); sheet.setAttribute('aria-hidden','false'); $('sh-close').focus();
 }

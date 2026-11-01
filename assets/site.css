@@ -323,3 +323,8 @@ pre.code .k{color:var(--gold)} pre.code .c{color:#8FB5AA}
 .kwl{list-style:none;margin:12px 0 12px;padding:0;display:grid;gap:9px}
 .kwl li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:600}
 .kw-card a{font-weight:800;color:inherit}
+
+.wk ol.eps{list-style:none;padding-left:0}
+.eps li b{font-weight:800;color:var(--ink);margin-right:4px}
+.eps li.soon{color:var(--mut,#5d716b);opacity:.85}
+.eps li.soon svg{width:16px;height:16px;vertical-align:-2px;margin-right:6px;stroke:currentColor}

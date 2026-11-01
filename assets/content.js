@@ -4,6 +4,7 @@
    Weeks unlock by date on their own; nothing else needs changing. */
 window.SITE = {
   seasonStart: Date.UTC(2026, 10, 2, 0, 0, 0),          // Mon 2 Nov 2026, 00:00 UK time (GMT)
+  epOpensH: [0, 61.5, 109.5],                           // Ep 1 opens with its week, Ep 2 Wed 13:30, Ep 3 Fri 13:30 UK (hours after Mon 00:00)
   week1Opens: Date.UTC(2026, 10, 1, 21, 0, 0),          // Week 1 opened early: Sun 1 Nov 2026, 21:00 UK time (weeks 2-12 keep their Monday dates)
   instagram: 'https://www.instagram.com/analytixai_/',
   instagramDM: 'https://ig.me/m/analytixai_',
@@ -17,13 +18,13 @@ window.MODULES = ['Data Foundations', 'SQL', 'MS Excel', 'Statistics for Analyst
 
 /* Twelve weeks. A week's title and episodes are stored encoded (same as the roadmap) and only decoded
    once that week unlocks, so locked weeks can't be read from the page source.
-   files: [{name, href, type, note}] */
+   files: [{name, href, type, note, ep}]  (ep = which episode of the week the file belongs to: 1, 2 or 3; it shows once that episode is out) */
 window.WEEKS = [
   { n: 1,  mods: [1, 2], files: [
-      { name: 'Week1_Find_All_Five.pdf', href: 'files/week-01/Week1_Find_All_Five.pdf', type: 'PDF', note: 'Ep 01 worksheet: find row, column, ID, data type and messy data, with answers' },
-      { name: 'week1_orders.csv', href: 'files/week-01/week1_orders.csv', type: 'CSV', note: '40 orders from August 2026. Opens in Excel or Google Sheets' },
-      { name: 'week1_orders.sql', href: 'files/week-01/week1_orders.sql', type: 'SQL', note: 'Builds the same orders table in MySQL 8 or MariaDB, for Ep 02 and Ep 03' },
-      { name: 'Week1_all_files.zip', href: 'files/week-01/Week1_all_files.zip', type: 'ZIP', note: 'Everything above in one download', all: true }
+      { ep: 1, name: 'Week1_Find_All_Five.pdf', href: 'files/week-01/Week1_Find_All_Five.pdf', type: 'PDF', note: 'Ep 01 worksheet: find row, column, ID, data type and messy data, with answers' },
+      { ep: 1, name: 'week1_orders.csv', href: 'files/week-01/week1_orders.csv', type: 'CSV', note: '40 orders from August 2026. Opens in Excel or Google Sheets' },
+      { ep: 1, name: 'week1_orders.sql', href: 'files/week-01/week1_orders.sql', type: 'SQL', note: 'Builds the same orders table in MySQL 8 or MariaDB (run it in MySQL Workbench)' },
+      { ep: 1, name: 'Week1_all_files.zip', href: 'files/week-01/Week1_all_files.zip', type: 'ZIP', note: 'Everything above in one download', all: true }
     ] },
   { n: 2,  mods: [2],    files: [] },
   { n: 3,  mods: [2],    files: [] },

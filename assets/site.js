@@ -20,6 +20,14 @@
   const fmt = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Europe/London' }).replace(',', '');
   const daysTo = d => Math.max(0, Math.ceil((d - now()) / DAY));
   const toGo = d => d === 0 ? 'Opens today' : d === 1 ? '1 day to go' : d + ' days to go';
+  // episodes inside a week open one at a time: Ep 1 with the week, Ep 2 on Wednesday, Ep 3 on Friday (SITE.epOpensH = hours after Monday 00:00)
+  const EP_H = S.epOpensH || [0, 61.5, 109.5];
+  const epDate = (n, k) => new Date(S.seasonStart + (n - 1) * WEEK + EP_H[k - 1] * 3600e3);
+  const epOpen = (n, k) => n <= unlocked() && (k === 1 || now() >= epDate(n, k).getTime());
+  const epNo = (w, i) => 'Ep ' + String((w.n - 1) * 3 + i + 1).padStart(2, '0');
+  const epList = (w, d) => `<ol class="eps">${d.e.map((x, i) => epOpen(w.n, i + 1) ? `<li><b>${epNo(w, i)}</b> ${esc(x)}</li>` :
+      `<li class="soon">${ICON.lock}<span>${epNo(w, i)} drops ${fmt(epDate(w.n, i + 1))}</span></li>`).join('')}</ol>`;
+  const openFiles = w => w.files.filter(f => epOpen(w.n, f.ep || 1));
   const KEY = 'zda2026';
   function dec(s) { const b = Uint8Array.from(atob(s), c => c.charCodeAt(0)); for (let k = 0; k < b.length; k++) b[k] ^= KEY.charCodeAt(k % KEY.length); return JSON.parse(new TextDecoder().decode(b)); }
   const info = w => (w.n <= unlocked() && window.WEEK_ENC) ? dec(window.WEEK_ENC[w.n - 1]) : null;
@@ -55,12 +63,13 @@
           <div class="body">${modChips(w)}<h3>${w.n === u + 1 ? 'Next up' : 'Locked'}</h3>
             <p class="lockline">${ICON.lock}Episodes, dataset and files open on ${date}.</p>
             <div class="foot">${projTag(w)}<span class="muted" style="font-size:14px">${w.n === u + 1 ? toGo(daysTo(weekDate(w.n))) : ''}</span></div></div></article>`;
-      const files = w.files.length ? `<ul class="files">${w.files.map(fileRow).join('')}</ul>` :
+      const fl = openFiles(w);
+      const files = fl.length ? `<ul class="files">${fl.map(fileRow).join('')}</ul>` :
         `<p class="lockline">${ICON.dl}Files for this week land here as each episode drops.</p>`;
       return `<article class="card wk${w.n === u ? ' now' : ''}" id="week-${w.n}" style="--mc:${mc}">
           <div class="top"><b>WEEK ${String(w.n).padStart(2, '0')}</b><span>${w.n === u ? 'This week' : 'Open since ' + date}</span></div>
           <div class="body">${modChips(w)}<h3>${esc(d.t)}</h3>
-            <ol>${d.e.map(x => `<li>${esc(x)}</li>`).join('')}</ol>${files}
+            ${epList(w, d)}${files}
             <div class="foot">${projTag(w)}<button class="btn sm" data-copy="week-${w.n}">${ICON.link}Copy link</button></div></div></article>`;
     }).join('');
   }
@@ -92,7 +101,7 @@
       } else {
         const w = W[u - 1], d = info(w);
         el.innerHTML = `<article class="card wk now" style="--mc:var(--m${w.mods[w.mods.length - 1]})"><div class="top"><b>WEEK ${String(u).padStart(2, '0')}</b><span>This week</span></div>
-          <div class="body">${modChips(w)}<h3>${esc(d.t)}</h3><ol>${d.e.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
+          <div class="body">${modChips(w)}<h3>${esc(d.t)}</h3>${epList(w, d)}
           <div class="foot"><a class="btn sm gold" href="resources.html#week-${u}">Get this week's files ${ICON.arrow}</a>${projTag(w)}</div></div></article>`;
       }
     });
