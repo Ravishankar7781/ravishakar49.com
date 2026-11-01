@@ -23,8 +23,8 @@ window.WEEKS = [
   { n: 1,  mods: [1, 2], files: [
       { ep: 1, name: 'Week1_Find_All_Five.pdf', href: 'files/week-01/Week1_Find_All_Five.pdf', type: 'PDF', note: 'Ep 01 worksheet: find row, column, ID, data type and messy data, with answers' },
       { ep: 1, name: 'week1_orders.csv', href: 'files/week-01/week1_orders.csv', type: 'CSV', note: '40 orders from August 2026. Opens in Excel or Google Sheets' },
-      { ep: 1, name: 'week1_orders.sql', href: 'files/week-01/week1_orders.sql', type: 'SQL', note: 'Builds the same orders table in MySQL 8 or MariaDB (run it in MySQL Workbench)' },
-      { ep: 1, name: 'Week1_all_files.zip', href: 'files/week-01/Week1_all_files.zip', type: 'ZIP', note: 'Everything above in one download', all: true }
+      { ep: 1, name: 'Week1_all_files.zip', href: 'files/week-01/Week1_all_files.zip', type: 'ZIP', note: 'Everything above in one download', all: true },
+      { ep: 2, name: 'week1_orders.sql', href: 'files/week-01/week1_orders.sql', type: 'SQL', note: 'For Ep 02: builds this orders table in MySQL 8 or MariaDB (run it in MySQL Workbench)' }
     ] },
   { n: 2,  mods: [2],    files: [] },
   { n: 3,  mods: [2],    files: [] },
