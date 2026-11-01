@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The 12-week Zero to Data Analyst roadmap: 8 modules, 36 episodes, 4 portfolio projects and a capstone. A new week unlocks every Monday.">
+<meta property="og:title" content="Zero to Data Analyst · Roadmap"><meta property="og:image" content="assets/img/og-card.png"><meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<title>Roadmap · Zero to Data Analyst</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;800&family=JetBrains+Mono:wght@500&family=Caveat:wght@700&display=swap">
+<style>
+/* Layout: one bright phone-width column; a game-style trail that draws itself as you scroll, a "you" marker rides it, week cards swing in from alternating sides.
+   Deliberately one light look (the series brand is bright), so there are no dark-theme overrides. */
+:root{
+  color-scheme:light;
+  --bg:#F3FAF6; --bg2:#FFF8E8; --surface:#FFFFFF; --ink:#12302A; --ink2:#4B6B63; --line:#BFD6CC;
+  --gold:#FFB81C; --coral:#FF6B4A; --mint:#DDF5EA;
+  --c1:#12A37F; --c2:#2D7FF9; --c3:#F49B0B; --c4:#7B61FF; --c5:#F0643E; --c6:#E84393;
+  /* one colour per module, in learning order */
+  --m1:#F0643E; --m2:#2D7FF9; --m3:#12A37F; --m4:#7B61FF; --m5:#F49B0B; --m6:#0E9FB5; --m7:#A23BD6; --m8:#E84393;
+  --display:'Bricolage Grotesque','Arial Black',system-ui,sans-serif;
+  --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --hand:'Caveat','Comic Sans MS',cursive;
+  --blur:3px; --spring:cubic-bezier(.2,1.35,.4,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:linear-gradient(180deg,var(--bg) 0%,#EEF7FF 45%,var(--bg2) 100%);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;overflow-x:hidden}
+#float{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#float span{position:absolute;font:800 var(--s,26px)/1 var(--display);color:var(--k);opacity:.16;will-change:transform}
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:26px 60px}
+
+/* header */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:800 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:30px;background:var(--surface);border:2px solid var(--ink)}
+.chip:nth-child(1){background:var(--gold)}
+h1{margin:14px 0 0;font:800 58px/.92 var(--display);letter-spacing:-.035em;text-wrap:balance}
+h1 .w{display:inline-block;animation:rise .7s var(--spring) both;animation-delay:calc(var(--d)*90ms)}
+h1 .hl{position:relative;color:var(--surface);padding:0 8px;margin-left:-4px;isolation:isolate;white-space:nowrap}
+h1 .hl::before{content:"";position:absolute;inset:6px 0 2px;background:var(--c1);border-radius:12px;transform:rotate(-1.5deg) scaleX(0);transform-origin:left;animation:swipe .55s .45s cubic-bezier(.7,0,.2,1) forwards;z-index:-1}
+@keyframes rise{from{transform:translateY(36px) rotate(4deg);opacity:0}}
+@keyframes swipe{to{transform:rotate(-1.5deg) scaleX(1)}}
+.hand{font:700 26px/1 var(--hand);color:var(--coral);margin:10px 0 0;transform:rotate(-2deg);display:inline-block}
+.query{margin-top:16px;font:500 13px/1.55 var(--mono);color:#D7F5E9;background:var(--ink);border-radius:14px;padding:12px 14px;overflow-wrap:anywhere;min-height:3.9em;box-shadow:5px 6px 0 var(--c1)}
+.query b{color:var(--gold);font-weight:500}
+.query i{font-style:normal;color:#8FA9A2}
+.cursor{display:inline-block;width:8px;height:1.05em;background:var(--gold);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.stat{background:var(--surface);border:2.5px solid var(--ink);border-radius:16px;padding:10px 6px;text-align:center;box-shadow:4px 5px 0 var(--ink)}
+.stat strong{display:block;font:800 30px/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat:nth-child(1) strong{color:var(--c2)} .stat:nth-child(2) strong{color:var(--c3)} .stat:nth-child(3) strong{color:var(--c1)}
+.stat span{display:block;font:600 11.5px/1.25 var(--body);color:var(--ink2);margin-top:4px}
+.together{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px 14px;border-radius:18px;background:var(--surface);border:2.5px dashed var(--c1)}
+.avatars{display:flex;flex:none}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 12px var(--body);border:3px solid var(--surface)}
+.av.you{background:var(--gold);color:var(--ink)}
+.av.me{background:var(--c1);color:#fff;margin-left:-12px;font:800 18px var(--display)}
+.together p{margin:0;font:600 15px/1.35 var(--body)}
+.together p b{color:var(--c1)}
+
+/* module stack */
+.stack{margin-top:24px}
+.stack-head{display:flex;justify-content:space-between;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
+.stack-head h2{margin:0;font:800 28px/1 var(--display);letter-spacing:-.02em}
+.stack-head span{font:700 21px/1 var(--hand);color:var(--coral)}
+.mods-list{list-style:none;margin:14px 0 0;padding:0;display:grid}
+.mods-list li{animation:drop .6s var(--spring) both;animation-delay:calc(var(--d)*80ms + 300ms)}
+.mods-list li + li{margin-top:-7px}
+.mods-list li:nth-child(odd) button{transform:rotate(-.7deg)}
+.mods-list li:nth-child(even) button{transform:rotate(.7deg)}
+.mods-list button{position:relative;width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) auto;align-items:center;gap:12px;text-align:left;font:inherit;
+  color:var(--mt,#fff);background:var(--mc);border:2.5px solid var(--ink);border-radius:16px;padding:12px 14px;cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .25s var(--spring)}
+.mods-list button:hover{transform:translateX(5px) rotate(0)}
+.mods-list button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.mods-list .n{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center;font:800 18px/1 var(--display)}
+.mods-list .nm{font:800 17px/1.15 var(--display);letter-spacing:-.01em;min-width:0}
+.mods-list .nm small{display:block;font:600 12.5px/1.2 var(--body);opacity:.9;margin-top:2px;letter-spacing:0}
+.mods-list .wk{font:500 11.5px var(--mono);background:rgba(18,48,42,.18);padding:5px 8px;border-radius:20px;white-space:nowrap}
+@keyframes drop{from{transform:translateY(-34px) rotate(-5deg);opacity:0}}
+.mods{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.mod{font:800 10.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border-radius:20px;background:color-mix(in srgb,var(--mc) 14%,#fff);color:var(--ink);border:1.5px solid var(--mc)}
+.sh-mod{margin-top:6px;font:700 14px/1.3 var(--body);opacity:.95}
+
+/* trail */
+.map{position:relative;margin-top:30px}
+#trail{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+#trail .base{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:round;stroke-dasharray:1 14}
+#trail .prog{fill:none;stroke:url(#grad);stroke-width:7;stroke-linecap:round}
+#runner{position:absolute;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--gold);border:3px solid var(--ink);display:grid;place-items:center;
+  font:800 11px var(--body);letter-spacing:.06em;z-index:1;box-shadow:0 0 0 6px rgba(255,184,28,.35),0 6px 14px rgba(18,48,42,.25);pointer-events:none}
+.start{position:relative;margin-bottom:20px}
+.flag{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:2.5px solid var(--ink);border-radius:30px;padding:8px 14px 8px 54px;font:800 12px var(--body);letter-spacing:.1em;text-transform:uppercase;box-shadow:3px 4px 0 var(--ink)}
+.flag .dot{position:absolute;left:20px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--coral)}
+#runner.at-start{z-index:3}
+.weeks{list-style:none;margin:0;padding:0;display:grid;gap:30px}
+.week{position:relative;z-index:2;display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:center;--c:var(--c1)}
+.week:nth-child(even){grid-template-columns:minmax(0,1fr) 72px}
+.week:nth-child(even) .node{order:2}
+.node{position:relative;width:64px;height:64px;border-radius:50%;background:var(--c);color:var(--ct,#fff);display:grid;place-items:center;justify-self:center;border:3px solid var(--ink);
+  font:800 30px/1 var(--display);cursor:pointer;box-shadow:0 0 0 6px var(--bg),3px 5px 0 6px var(--ink);transition:transform .4s var(--spring)}
+.node .lock{position:absolute;right:-6px;bottom:-6px;width:27px;height:27px;border-radius:50%;background:var(--surface);border:2.5px solid var(--ink);display:grid;place-items:center}
+.node .lock svg{width:13px;height:13px;stroke:var(--ink);fill:none;stroke-width:2.6;stroke-linecap:round}
+.node.ms::after{content:"★";position:absolute;top:-12px;left:-8px;width:26px;height:26px;border-radius:50%;background:var(--gold);border:2.5px solid var(--ink);display:grid;place-items:center;font:800 13px/1 var(--body);color:var(--ink)}
+.node.next::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:3px solid var(--coral);animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.3);opacity:0}}
+.node.hit{animation:hit .55s var(--spring)}
+@keyframes hit{40%{transform:scale(1.22) rotate(-8deg)}}
+.node.shake{animation:shake .45s}
+@keyframes shake{20%{transform:rotate(-12deg)}45%{transform:rotate(10deg)}70%{transform:rotate(-6deg)}}
+.node:focus-visible,.card:focus-visible,.btn:focus-visible,.close:focus-visible{outline:3px solid var(--coral);outline-offset:4px}
+.card{position:relative;display:block;width:100%;text-align:left;background:var(--surface);color:var(--ink);border:2.5px solid var(--ink);border-radius:20px;padding:0;cursor:pointer;overflow:hidden;
+  box-shadow:6px 7px 0 var(--c);font:inherit;transition:transform .7s var(--spring),opacity .5s ease,box-shadow .2s}
+.card:hover{box-shadow:8px 10px 0 var(--c)}
+.card .band{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--c);color:var(--ct,#fff);padding:8px 14px}
+.card .band b{font:800 12px var(--body);letter-spacing:.16em}
+.card .band span{font:500 11.5px var(--mono);opacity:.95}
+.card .in{padding:11px 14px 13px}
+.card h3{margin:0 0 3px;font:800 19px/1.2 var(--display);letter-spacing:-.01em}
+.card .topic{margin:0;font:400 14px/1.35 var(--body);color:var(--ink2)}
+.proj{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:2px dashed var(--line)}
+.tag{flex:none;font:800 10.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;padding:6px 8px;border-radius:8px;background:color-mix(in srgb,var(--c) 16%,#fff);color:var(--ink);border:1.5px solid var(--c)}
+.tag.pf{background:var(--gold);border-color:var(--ink)}
+.proj span:last-child{font:600 13.5px/1.3 var(--body);min-width:0}
+.blur{filter:blur(var(--blur));user-select:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* scroll reveal: cards start tilted off to their side, still faintly visible */
+.js .week.pre .card{opacity:.18;transform:translateX(-70px) rotate(-7deg) scale(.9)}
+.js .week.pre:nth-child(even) .card{transform:translateX(70px) rotate(7deg) scale(.9)}
+.js .week.pre .node{transform:scale(.45)}
+
+.finish{position:relative;margin-top:34px;text-align:center;display:grid;justify-items:center;gap:6px}
+#confetti{position:absolute;left:50%;top:-40px;width:360px;height:320px;transform:translateX(-50%);pointer-events:none}
+.trophy{position:relative;width:92px;height:92px;border-radius:50%;background:var(--gold);border:3px solid var(--ink);display:grid;place-items:center;box-shadow:0 0 0 7px var(--bg),4px 6px 0 7px var(--ink)}
+.trophy svg{width:44px;height:44px;stroke:var(--ink);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.finish h2{margin:10px 0 0;font:800 36px/1 var(--display);letter-spacing:-.02em}
+.finish p{margin:0;color:var(--ink2);max-width:32ch;font-size:15px}
+
+.cta{margin-top:32px;background:var(--gold);color:var(--ink);border:3px solid var(--ink);border-radius:24px;padding:20px 18px;display:grid;gap:12px;box-shadow:6px 7px 0 var(--ink)}
+.cta h2{margin:0;font:800 30px/1 var(--display);letter-spacing:-.02em}
+.cta p{margin:0;font:600 15px/1.45 var(--body)}
+.cta .kw{background:var(--ink);color:var(--gold);padding:1px 8px;border-radius:6px;font:800 14px var(--mono)}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;background:var(--ink);color:#fff;border:none;border-radius:40px;padding:14px 18px;font:800 15px var(--body);text-decoration:none;cursor:pointer}
+footer{margin-top:24px;text-align:center;font:600 13px var(--body);color:var(--ink2)}
+footer b{font:800 15px var(--display);color:var(--ink)}
+
+/* week sheet */
+.scrim{position:fixed;inset:0;background:rgba(18,48,42,.35);opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;transform:translateY(105%);visibility:hidden;transition:transform .4s var(--spring),visibility 0s linear .4s;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.sheet-in{max-width:480px;margin:0 auto;background:var(--surface);border:3px solid var(--ink);border-radius:26px;padding:0 0 18px;overflow:hidden;box-shadow:0 -6px 30px rgba(18,48,42,.2)}
+.open .scrim{opacity:1;pointer-events:auto}
+.open .sheet{transform:none;visibility:visible;transition:transform .45s var(--spring),visibility 0s}
+.sheet-top{background:var(--c,var(--c1));color:var(--ct,#fff);padding:14px 18px 16px}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sheet-head span{font:800 12px var(--body);letter-spacing:.16em;text-transform:uppercase}
+.close{background:rgba(255,255,255,.2);border:2px solid currentColor;color:inherit;border-radius:50%;width:34px;height:34px;cursor:pointer;font:800 15px var(--body)}
+.sheet h3{margin:8px 0 0;font:800 24px/1.15 var(--display);letter-spacing:-.01em}
+.eps{list-style:none;margin:14px 18px;padding:0;display:grid;gap:8px}
+.eps li{display:grid;grid-template-columns:84px minmax(0,1fr);align-items:center;gap:10px;padding:11px 12px;border:2px solid var(--line);border-radius:14px}
+.eps .ep{font:500 12px var(--mono);color:var(--ink2)}
+.eps .ep small{display:block;margin-top:4px;font:800 9.5px/1.1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.eps .what{font:600 15px/1.3 var(--body);min-width:0}
+.eps .what .sub{display:block;margin-top:3px;font:500 12.5px/1.3 var(--body);color:var(--ink2)}
+.status{display:flex;align-items:center;gap:10px;margin:0 18px 12px;padding:12px;border-radius:14px;background:var(--mint);font:600 14px/1.35 var(--body)}
+.status svg{flex:none;width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:2.6;stroke-linecap:round}
+.sheet .btn{display:flex;margin:0 18px}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  h1 .hl::before{transform:rotate(-1.5deg)}
+  .js .week.pre .card,.js .week.pre .node{opacity:1;transform:none}
+}
+</style>
+<style>
+.sbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(255,248,232,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:3px solid #12302A}
+.sbar .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.sbar .lg{display:flex;align-items:center;gap:8px;font:800 20px/1 'Bricolage Grotesque','Arial Black',sans-serif;letter-spacing:-.03em;color:#12302A;text-decoration:none}
+.sbar .lg i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#FFB81C;border:3px solid #12302A;font-size:16px}
+.sbar .lg b{background:#12A37F;color:#fff;border-radius:6px;padding:0 5px 2px}
+.sbar nav{margin-left:auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.sbar nav a{font:700 14px/1 'Figtree',system-ui,sans-serif;color:#12302A;text-decoration:none;padding:9px 12px;border-radius:30px;border:2px solid #12302A;background:#fff;white-space:nowrap}
+.sbar nav a.hot{background:#FFB81C}
+@media (max-width:520px){.sbar nav a.hide{display:none}}
+</style>
+<div class="sbar"><div class="in"><a class="lg" href="./"><i>A</i><span>Analytix<b>AI</b></span></a>
+<nav aria-label="Site"><a class="hide" href="./">Home</a><a class="hide" href="./">Zero to Data Analyst</a><a class="hot" href="resources.html">Resources</a></nav></div></div>
+<div id="float" aria-hidden="true"></div>
+<div class="wrap" id="app">
+  <header>
+    <div class="chips"><span class="chip">Season 1</span><span class="chip">12 weeks</span><span class="chip">36 episodes</span><span class="chip">£0 · free tools</span></div>
+    <h1><span class="w" style="--d:0">Zero</span> <span class="w" style="--d:1">to</span><br><span class="w hl" style="--d:2">Data Analyst</span></h1>
+    <div class="hand">a free series by analytixai_</div>
+    <div class="query" aria-label="Weeks unlocked so far: none yet"><span id="typed"></span><span class="cursor"></span></div>
+    <div class="stats">
+      <div class="stat"><strong data-count="0" data-suffix="/12" id="s-unlocked">0/12</strong><span>weeks unlocked</span></div>
+      <div class="stat"><strong data-count="8">8</strong><span>modules</span></div>
+      <div class="stat"><strong data-count="4">4</strong><span>portfolio projects</span></div>
+    </div>
+    <div class="together">
+      <div class="avatars" aria-hidden="true"><div class="av you">YOU</div><div class="av me">a</div></div>
+      <p>You won't do this alone. <b>We learn it together</b>, one week at a time.</p>
+    </div>
+  </header>
+
+  <section class="stack" aria-label="What we'll cover">
+    <div class="stack-head"><h2>What we'll cover</h2><span>8 modules, in this order</span></div>
+    <ol class="mods-list" id="mods"></ol>
+  </section>
+
+  <section class="map" id="map" aria-label="12-week roadmap">
+    <svg id="trail" aria-hidden="true">
+      <defs><linearGradient id="grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="2600">
+        <stop offset="0" stop-color="#F0643E"/><stop offset=".09" stop-color="#F0643E"/><stop offset=".14" stop-color="#2D7FF9"/><stop offset=".33" stop-color="#2D7FF9"/><stop offset=".38" stop-color="#12A37F"/><stop offset=".5" stop-color="#12A37F"/><stop offset=".55" stop-color="#7B61FF"/><stop offset=".6" stop-color="#7B61FF"/><stop offset=".64" stop-color="#F49B0B"/><stop offset=".75" stop-color="#F49B0B"/><stop offset=".8" stop-color="#0E9FB5"/><stop offset=".85" stop-color="#0E9FB5"/><stop offset=".88" stop-color="#A23BD6"/><stop offset=".92" stop-color="#A23BD6"/><stop offset=".96" stop-color="#E84393"/><stop offset="1" stop-color="#E84393"/>
+      </linearGradient></defs>
+      <path class="base" d=""/><path class="prog" d=""/>
+    </svg>
+    <div id="runner" aria-hidden="true">YOU</div>
+    <div class="start"><span class="flag"><span class="dot"></span>Ep 0 · You are here</span></div>
+    <ol class="weeks" id="weeks"></ol>
+    <div class="finish" id="finish">
+      <canvas id="confetti" width="720" height="640" aria-hidden="true"></canvas>
+      <div class="trophy" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8M9 17h6"/></svg></div>
+      <h2>Finish line</h2>
+      <p>4 portfolio projects, a capstone and a CV ready to send for entry-level data analyst roles.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Want in?</h2>
+    <p>A new week unlocks every Monday. Every dataset and file is on the <a href="resources.html" style="color:inherit;font-weight:800">resources page</a>, free, with no sign-up.</p>
+    <a class="btn" href="https://www.instagram.com/analytixai_/" target="_blank" rel="noopener">Follow analytixai_ on Instagram</a>
+  </section>
+  <footer><a href="./" style="color:inherit"><b>AnalytixAI</b></a> · Data Analytics with AI · <a href="resources.html" style="color:inherit">Resources</a></footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-title" aria-hidden="true">
+  <div class="sheet-in">
+    <div class="sheet-top" id="sh-top">
+      <div class="sheet-head"><span id="sh-eyebrow">Week 1</span><button class="close" id="sh-close" aria-label="Close">✕</button></div>
+      <h3 id="sh-title"></h3>
+      <div class="sh-mod" id="sh-mod"></div>
+    </div>
+    <ul class="eps" id="sh-eps"></ul>
+    <div class="status" id="sh-status"></div>
+    <a class="btn" href="https://www.instagram.com/analytixai_/" target="_blank" rel="noopener">Follow so you don't miss it</a>
+  </div>
+</div>
+
+<script>
+// Weeks unlock by date: Week 1 opens on SEASON_START (00:00 UK time), then one more week every 7 days.
+const SEASON_START = Date.UTC(2026, 10, 2, 0, 0, 0);   // Mon 2 Nov 2026 (UK is on GMT then)
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+const unlockedNow = () => { const t = Date.now() - SEASON_START; return t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK_MS) + 1); };
+let UNLOCKED_WEEKS = unlockedNow();
+// Topics are stored encoded and decoded only for open weeks; locked weeks show placeholder text of the same shape.
+const MODULES = [
+  {n:'Data Foundations'}, {n:'SQL'}, {n:'MS Excel'}, {n:'Statistics for Analysts'},
+  {n:'Data Visualisation', s:'Power BI + Tableau'}, {n:'Python'}, {n:'Applied Statistics'}, {n:'Portfolio, Storytelling & Job Hunt'},
+];
+// c = colour (module), m = modules covered that week, pf = portfolio project number,
+// k = what the week's third episode is: a lesson, a practice set, applying stats to a project, a portfolio project, or the capstone
+const META = [{c:1,m:[1,2],k:'lesson'},{c:2,m:[2],k:'practice'},{c:2,m:[2],k:'lesson'},{c:2,m:[2],pf:1,k:'project'},{c:3,m:[3],k:'practice'},{c:3,m:[3],pf:2,k:'project'},
+  {c:4,m:[4],k:'apply'},{c:5,m:[5],k:'lesson'},{c:5,m:[5],pf:3,k:'project'},{c:6,m:[6],k:'lesson'},{c:7,m:[6,7],pf:4,k:'project'},{c:8,m:[8],k:'capstone'}];
+const tagOf = w => w.k === 'project' ? '★ Project ' + w.pf : ({lesson:'Lesson', practice:'Practice', apply:'Apply', capstone:'★ Capstone'})[w.k];
+const ENC = ["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"];
+const FAKE = [{"t": "Kcat jnmrl egioa hu PAD", "topic": "Cypn arvnlbgbtlw · FGMWMW, KLWC, RFRWP · FFFTL wrgtdc", "e": ["1 nbti titkd ljs josg iedudy RHL", "Tetd mfobb vnmaf: HAHBTP, CMAN, RGBCI", "Psgojg cdsr vfys THIDO"], "s": ""}, {"t": "Faokwn fuyn c yvh", "topic": "TKO, OK, TT, BKDAELT, OHFC · LTTDH TR, PIALNAEN, GAFP", "e": ["OCO, IR, TT, FSTKICH, BRNA", "POKLO MK, ILFNBORT isi CNGI", "Erlduodit oabidhtvp"], "s": ""}, {"t": "Bnciglteu cfr muwljcu", "topic": "FBDFA, EEK, RKW · BBWDL AE, MCFGGO · LHTWn", "e": ["MTHTK, PEM, NKB (pml gvsfgkn nb bknpft)", "OMHLB KP fml WRATOF", "PGOCo: amvmibbnm lwywif"], "s": ""}, {"t": "Euctr os DCO", "topic": "REKD ASGT, GMKi · yjnpss jkahwtsec · yewd yjidt ccbpvbrii stnvvag", "e": ["CEFG RBEI aum BWWn", "Bvaeea lvtrsnapc: PLKB, fgjdefe twdunr", "Gfrw svt ugciwudty edrnlc 38% mk dyhelvn"], "s": "732s shkb ttdeec (Tlvbb) · PBF ilgoywkj cn RDN"}, {"t": "Twmmv aft vcabkyed", "topic": "Lmvyenje rirs · WS, NFINLEA, LKTCRR", "e": ["Mybnw cifdau uhl nhucvryi", "IG, GFTERLO kls HWOBNL", "Wdcbe dfd njel fd wlkjtougt"], "s": ""}, {"t": "Nuujrb vfv bosmvvbepa", "topic": "Mvohs ewygyb · itgdjp · taiiprpfu nngdyg", "e": ["Nandi fihgha: KSGOC FO ggbs g caafl", "Btarny ktp vchibeadb gdchec", "PSI pprybbswf akr u patm HL utwbkrsw"], "s": "827l+ cgjyk vwuj · jhnhvbb, ckmvtmy, nht crfhgnyd"}, {"t": "Tcotwbp icmd rhbk fsm byrif", "topic": "Gkee, sflypf, mabgsnht · gleoat, supghsosocd, % olvsnk · chkfwjkgalt", "e": ["Pjuh, gcfubb lch cscgmrdk", "Hkuydh, lkethoeyjid kyp % hftnst", "Irgufwuymum: unj fmapd tycucaju fa nepk mjwtvlmiy"], "s": ""}, {"t": "Mgym Evnkm HE", "topic": "Dyne yla mynvr · cyfy aoich · WAE vttjldth", "e": ["Ridph OR: oagw olp cchny", "Ewcl sbydi wyv ardugtlgpuskk", "EHM tahjmaoy"], "s": ""}, {"t": "Shfavdrrow svwe rmnj w wockh", "topic": "Wbvbsl dmr oggehfodjrii · pbd aoip vtlluwhlb wg Tmoycau", "e": ["Onbcsrokf tveyjp caa kjbppllaoajt", "Hskcbch hw wt Hwsimiy", "Pobbhd ek Kkhck: koa emultheni fc EOC jhnri"], "s": "BkkrOL HK0.3 ibrh · Rfbru PD + Eyfagjy nolrvtpnt"}, {"t": "Npkjls mcb idlilvak", "topic": "Espoui kirjuv sfyc OF · fjpefk: ulurr, vnmgs, lsrfb", "e": ["Edbiog foooar, mvfw TB fh dkdo aatreu", "itibjp: nvwc, tcedvi, gtfrk", "sltwjc: lafjuei vpa phdkdk"], "s": ""}, {"t": "Rmvl uw jkkl iy hergsgl", "topic": "Cnaggdeout hsvtn · lcd E/L jwcy kfamlm · vsay evmasf wfnwufp", "e": ["Hobcvnifon phmlj jc uydda Nftufyr", "Rwk I/L uwkh bhyyrc", "Craetj wsu oue evfhdoy cdab ggwtrb?"], "s": "B/E akey mf ~944g befkr · ipspnakgtt pprs pj Epmuvk"}, {"t": "Tekrtjaym, KN, nnh iaoa", "topic": "Dbyaa ucptlfol · Tdyip AA rssgch · dahcawjoa, WS, RkbrifNt", "e": ["Icsrcdbd trrf 6: ulipt sunp vl DIF + Gtpprw", "Afegcgwe mekr 7: yjo Tnwhj TR ybljmg", "Hekknavoo, LO, OrratpMt mno ruy ntol"], "s": "9p oromokj cpcoevcel · ENC + Rvuect + Avvki SE"}];
+const KEY = 'zda2026';
+function dec(s){ const b = Uint8Array.from(atob(s), ch => ch.charCodeAt(0)); for(let k=0;k<b.length;k++) b[k] ^= KEY.charCodeAt(k % KEY.length); return JSON.parse(new TextDecoder().decode(b)); }
+const week = i => Object.assign({}, META[i], i < UNLOCKED_WEEKS ? dec(ENC[i]) : FAKE[i]);
+const WEEKS = META;
+
+/* "What we'll cover": the 8 modules stacked in order; tap one to jump to its first week */
+function buildModules(){
+  const ol = document.getElementById('mods');
+  ol.innerHTML = MODULES.map((m,k)=>{
+    const ws = META.map((w,i) => w.m.includes(k+1) ? i+1 : 0).filter(Boolean);
+    const range = ws.length > 1 ? `Wk ${ws[0]}–${ws[ws.length-1]}` : `Wk ${ws[0]}`;
+    return `<li style="--d:${k}"><button style="--mc:var(--m${k+1});${k===4?'--mt:var(--ink)':''}" data-w="${ws[0]}" aria-label="Module ${k+1}: ${m.n}, ${range.replace('Wk','week')}">`+
+      `<span class="n">${k+1}</span><span class="nm">${m.n}${m.s?`<small>${m.s}</small>`:''}</span><span class="wk">${range}</span></button></li>`;
+  }).join('');
+  ol.addEventListener('click', e=>{ const b = e.target.closest('[data-w]'); if(!b) return; const el = document.getElementById('week-' + b.dataset.w);
+    if(el) el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'center'}); });
+}
+const LOCK = '<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+const pad = n => String(n).padStart(2,'0');
+const eps = i => [3*i+1, 3*i+2, 3*i+3];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = id => document.getElementById(id);
+document.documentElement.classList.add('js');
+
+/* floating data glyphs (parallax) */
+const GLYPHS = [['Σ','--c1'],['%','--c2'],['=SUM()','--c3'],['{ }','--c4'],['▲','--c5'],['SQL','--c2'],['∑x','--c6'],['%','--c1'],['AVG','--c3'],['#','--c4']];
+const fl = $('float');
+GLYPHS.forEach(([g,k],i)=>{const s=document.createElement('span');s.textContent=g;s.style.setProperty('--k',`var(${k})`);s.style.setProperty('--s',(20+(i*7)%22)+'px');
+  s.style.left=((i*37+8)%88)+'%';s.style.top=((i*53+5)%95)+'%';s.dataset.f=(.08+(i%4)*.06).toFixed(2);fl.appendChild(s)});
+
+function render(){
+  const ol = $('weeks'); ol.innerHTML = '';
+  WEEKS.forEach((_,i)=>{
+    const w = week(i), open = i < UNLOCKED_WEEKS, [a,,c] = eps(i), b = open ? '' : 'blur', hid = open ? '' : ' aria-hidden="true"';
+    const li = document.createElement('li'); li.className = 'week'; li.id = 'week-' + (i+1);
+    li.style.setProperty('--c', `var(--m${w.c})`); li.style.setProperty('--ct', w.c === 5 ? 'var(--ink)' : '#fff');
+    li.innerHTML = `
+      <button class="node${w.pf?' ms':''}${i===UNLOCKED_WEEKS?' next':''}" data-i="${i}" aria-label="Week ${i+1}${open?'':', locked'}">${i+1}${open?'':`<span class="lock">${LOCK}</span>`}</button>
+      <button class="card" data-i="${i}">
+        <span class="band"><b>WEEK ${pad(i+1)}</b><span>${open?'Unlocked':'Unlocks · Ep '+a}</span></span>
+        <span class="in" style="display:block">
+          <span class="mods">${w.m.map(k=>`<span class="mod" style="--mc:var(--m${k})">${MODULES[k-1].n}</span>`).join('')}</span>
+          <h3 class="${b}"${hid}>${w.t}</h3>
+          <p class="topic ${b}"${hid}>${w.topic}</p>
+          ${open?'':`<span class="sr">Hidden until Episode ${a}</span>`}
+          <span class="proj"><span class="tag${(w.pf || w.k==='capstone')?' pf':''}">${tagOf(w)}</span><span class="${b}"${hid}>${w.e[2]}</span></span>
+        </span>
+      </button>`;
+    ol.appendChild(li);
+  });
+  $('s-unlocked').dataset.count = UNLOCKED_WEEKS;
+}
+
+/* header: typed SQL + count-up */
+function typeQuery(){
+  const n = UNLOCKED_WEEKS, html = `<b>SELECT</b> week <b>FROM</b> season_1 <b>WHERE</b> unlocked = <b>TRUE</b>;<br><i>-- ${n ? n+' row'+(n>1?'s':'') : '0 rows (so far)'}</i>`;
+  const el = $('typed');
+  if(reduce){el.innerHTML = html; return;}
+  const tmp = document.createElement('div'); tmp.innerHTML = html; const total = tmp.textContent.length; let k = 0;
+  const step = () => { k += 2; el.innerHTML = cut(html, k); if(k < total) setTimeout(step, 28); };
+  setTimeout(step, 500);
+}
+function cut(html, n){ // keep tags, show first n text characters
+  let out = '', c = 0; for(const part of html.split(/(<[^>]+>)/)){ if(part.startsWith('<')){out += part; continue;} if(c >= n) continue; out += part.slice(0, n - c); c += part.length; }
+  return out;
+}
+function countUp(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const to = +el.dataset.count, pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
+    if(reduce || to === 0){el.textContent = pre+to+suf; return;}
+    const t0 = performance.now(); const tick = now => { const p = Math.min(1,(now-t0)/900); el.textContent = pre+Math.round(to*(1-Math.pow(1-p,3)))+suf; if(p<1) requestAnimationFrame(tick); };
+    el.textContent = pre+'0'+suf; setTimeout(()=>requestAnimationFrame(tick), 700);
+  });
+}
+
+/* trail geometry */
+let pathLen = 0, pathEl, baseEl, pts = [];
+function drawTrail(){
+  const map = $('map'), svg = $('trail'), r = map.getBoundingClientRect();
+  pts = [document.querySelector('.flag .dot'), ...document.querySelectorAll('.node'), document.querySelector('.trophy')].map(el=>{
+    const b = el.getBoundingClientRect(); return [b.left - r.left + b.width/2, b.top - r.top + b.height/2];
+  });
+  svg.setAttribute('viewBox', `0 0 ${r.width} ${r.height}`);
+  svg.querySelector('#grad').setAttribute('y2', r.height);
+  let d = `M${pts[0][0]} ${pts[0][1]}`;
+  for(let k=1;k<pts.length;k++){const [x0,y0]=pts[k-1],[x1,y1]=pts[k],m=(y1-y0)/2; d += ` C${x0} ${y0+m}, ${x1} ${y1-m}, ${x1} ${y1}`;}
+  baseEl = svg.querySelector('.base'); pathEl = svg.querySelector('.prog');
+  baseEl.setAttribute('d', d); pathEl.setAttribute('d', d);
+  pathLen = pathEl.getTotalLength(); pathEl.style.strokeDasharray = `${pathLen} ${pathLen}`;
+  onScroll();
+}
+function lenAtY(y){ // binary search: path runs top to bottom
+  let lo = 0, hi = pathLen; for(let k=0;k<22;k++){const mid=(lo+hi)/2; if(pathEl.getPointAtLength(mid).y < y) lo = mid; else hi = mid;} return lo;
+}
+let lastHit = -1, confettiDone = false;
+function onScroll(){
+  if(!pathEl) return;
+  const map = $('map'), r = map.getBoundingClientRect();
+  const y = reduce ? 0 : innerHeight*0.55 - r.top;
+  const L = Math.max(0, Math.min(pathLen - 64, lenAtY(y)));
+  pathEl.style.strokeDashoffset = pathLen - L;
+  const p = pathEl.getPointAtLength(L), ru = $('runner'); ru.style.transform = `translate(${p.x}px,${p.y}px)`; ru.classList.toggle('at-start', L < 30);
+  // light up each week as the runner passes it
+  const passed = pts.slice(1, -1).filter(q => q[1] <= p.y + 2).length - 1;
+  if(passed > lastHit){ for(let k=lastHit+1;k<=passed;k++){ const n = document.querySelectorAll('.node')[k]; if(n && !reduce){ n.classList.remove('hit'); void n.offsetWidth; n.classList.add('hit'); } } }
+  lastHit = Math.max(lastHit, passed);
+  if(!confettiDone && L >= pathLen - 66){ confettiDone = true; confetti(); }
+  // parallax glyphs
+  if(!reduce) fl.querySelectorAll('span').forEach(s => s.style.transform = `translateY(${-scrollY * s.dataset.f}px) rotate(${scrollY * s.dataset.f * .15}deg)`);
+}
+
+/* scroll reveal for week cards (cards already in view at load stay as they are) */
+function setupReveal(){
+  if(reduce || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -12% 0px'});
+  document.querySelectorAll('.week').forEach(w => { if(w.getBoundingClientRect().top > innerHeight * .92){ w.classList.add('pre'); io.observe(w); } });
+}
+
+/* finish-line confetti */
+function confetti(){
+  if(reduce) return;
+  const cv = $('confetti'), ctx = cv.getContext('2d'), cols = ['#12A37F','#2D7FF9','#F49B0B','#7B61FF','#F0643E','#E84393','#FFB81C'];
+  const ps = Array.from({length:90}, (_,i)=>({x:360, y:300, vx:(Math.random()-.5)*14, vy:-6-Math.random()*11, r:4+Math.random()*6, a:Math.random()*6, va:(Math.random()-.5)*.4, c:cols[i%cols.length], w:Math.random()<.5}));
+  let f = 0; const tick = () => { ctx.clearRect(0,0,720,640); f++;
+    ps.forEach(q=>{ q.vy += .38; q.vx *= .99; q.x += q.vx; q.y += q.vy; q.a += q.va; ctx.save(); ctx.translate(q.x,q.y); ctx.rotate(q.a); ctx.fillStyle = q.c; ctx.globalAlpha = Math.max(0, 1 - f/110);
+      if(q.w) ctx.fillRect(-q.r, -q.r/2.5, q.r*2, q.r/1.25); else { ctx.beginPath(); ctx.arc(0,0,q.r/1.6,0,7); ctx.fill(); } ctx.restore(); });
+    if(f < 110) requestAnimationFrame(tick); else ctx.clearRect(0,0,720,640); };
+  requestAnimationFrame(tick);
+}
+
+/* week sheet */
+const sheet = $('sheet'); let lastFocus = null;
+function openWeek(i){
+  const w = week(i), open = i < UNLOCKED_WEEKS, [a,b,c] = eps(i), blur = open ? '' : ' blur';
+  $('sh-top').style.setProperty('--c', `var(--m${w.c})`); $('sh-top').style.setProperty('--ct', w.c === 5 ? 'var(--ink)' : '#fff');
+  $('sh-mod').textContent = w.m.map(k => MODULES[k-1].n).join(' + ');
+  $('sh-eyebrow').textContent = `Week ${pad(i+1)} · Ep ${a}–${c}`;
+  $('sh-title').textContent = open ? w.t : `Week ${i+1} is locked`;
+  const labels = ['Lesson', 'Lesson', tagOf(w)];
+  $('sh-eps').innerHTML = [a,b,c].map((e,k)=>`<li><span class="ep">Ep ${pad(e)}<small>${labels[k]}</small></span>`+
+    `<span class="what${blur}"${open?'':' aria-hidden="true"'}>${w.e[k]}${k===2 && w.s ? `<small class="sub">${w.s}</small>` : ''}</span></li>`).join('');
+  $('sh-status').innerHTML = open ? `<span>Unlocked. Watch Ep ${a}–${c} and build the project.</span>`
+    : `${LOCK}<span>Unlocks with <b>Episode ${a}</b>. Every topic stays hidden until then.</span>`;
+  lastFocus = document.activeElement; document.body.classList.add('open'); sheet.setAttribute('aria-hidden','false'); $('sh-close').focus();
+}
+function closeSheet(){document.body.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); if(lastFocus) lastFocus.focus();}
+$('weeks').addEventListener('click', e=>{
+  const el = e.target.closest('[data-i]'); if(!el) return; const i = +el.dataset.i;
+  if(i >= UNLOCKED_WEEKS){const n = document.querySelector(`.node[data-i="${i}"]`); n.classList.remove('shake','hit'); void n.offsetWidth; n.classList.add('shake');}
+  openWeek(i);
+});
+$('scrim').addEventListener('click', closeSheet);
+$('sh-close').addEventListener('click', closeSheet);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.body.classList.contains('open')) closeSheet(); });
+
+buildModules(); render(); typeQuery(); countUp();
+// if the page stays open past an unlock moment, open the new week without a reload
+setInterval(()=>{ const n = unlockedNow(); if(n !== UNLOCKED_WEEKS){ UNLOCKED_WEEKS = n; render(); typeQuery(); countUp(); lastHit = -1; requestAnimationFrame(drawTrail); } }, 60000);
+requestAnimationFrame(()=>{ drawTrail(); setupReveal(); });
+addEventListener('scroll', ()=>requestAnimationFrame(onScroll), {passive:true});
+addEventListener('resize', ()=>requestAnimationFrame(drawTrail));
+if(document.fonts) document.fonts.ready.then(()=>requestAnimationFrame(drawTrail));
+</script>
+
+</body>
+</html>

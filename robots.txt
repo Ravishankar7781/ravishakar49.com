@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://ravishankar49.com/sitemap.xml
