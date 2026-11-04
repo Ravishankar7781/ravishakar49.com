@@ -26,9 +26,7 @@ window.WEEKS = [
       { ep: 1, name: 'week1_orders.csv', href: 'files/week-01/week1_orders.csv', type: 'CSV', note: '40 orders from August 2026. Opens in Excel or Google Sheets' },
       { ep: 1, name: 'Week1_all_files.zip', href: 'files/week-01/Week1_all_files.zip', type: 'ZIP', note: 'All Ep 01 files in one download', all: true },
       { ep: 2, name: 'Ep02_Your_First_Database.pdf', href: 'files/week-01/Ep02_Your_First_Database.pdf', type: 'PDF', note: 'Ep 02 step sheet: set up MySQL Workbench, then make the shop database, with a quick check' },
-      { ep: 2, name: 'ep02_shop.sql', href: 'files/week-01/ep02_shop.sql', type: 'SQL', note: 'The three lines from the video: CREATE DATABASE shop, SHOW DATABASES, USE shop' },
-      { ep: 2, name: 'week1_orders.sql', href: 'files/week-01/week1_orders.sql', type: 'SQL', note: 'Head start for Friday: builds the 40 Ep 01 orders as a table inside shop (MySQL 8 or MariaDB)' },
-      { ep: 2, name: 'Ep02_all_files.zip', href: 'files/week-01/Ep02_all_files.zip', type: 'ZIP', note: 'All Ep 02 files in one download', all: true }
+      { ep: 2, name: 'ep02_shop.sql', href: 'files/week-01/ep02_shop.sql', type: 'SQL', note: 'The three lines from the video: CREATE DATABASE shop, SHOW DATABASES, USE shop' }
     ] },
   { n: 2,  mods: [2],    files: [] },
   { n: 3,  mods: [2],    files: [] },
