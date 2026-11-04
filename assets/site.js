@@ -63,8 +63,9 @@
           <div class="body">${modChips(w)}<h3>${w.n === u + 1 ? 'Next up' : 'Locked'}</h3>
             <p class="lockline">${ICON.lock}Episodes, dataset and files open on ${date}.</p>
             <div class="foot">${projTag(w)}<span class="muted" style="font-size:14px">${w.n === u + 1 ? toGo(daysTo(weekDate(w.n))) : ''}</span></div></div></article>`;
-      const fl = openFiles(w);
-      const files = fl.length ? `<ul class="files">${fl.map(fileRow).join('')}</ul>` :
+      const fl = openFiles(w), eps = [...new Set(fl.map(f => f.ep || 1))].sort((x, y) => x - y);   // files stacked under their episode
+      const files = fl.length ? eps.map(k => `<div class="epfiles"><h4><b>${epNo(w, k - 1)}</b>${esc(d.e[k - 1])}</h4>
+            <ul class="files">${fl.filter(f => (f.ep || 1) === k).map(fileRow).join('')}</ul></div>`).join('') :
         `<p class="lockline">${ICON.dl}Files for this week land here as each episode drops.</p>`;
       return `<article class="card wk${w.n === u ? ' now' : ''}" id="week-${w.n}" style="--mc:${mc}">
           <div class="top"><b>WEEK ${String(w.n).padStart(2, '0')}</b><span>${w.n === u ? 'This week' : 'Open since ' + date}</span></div>

@@ -152,6 +152,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .files{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .file{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 10px 10px 12px;border:2px solid var(--ink);border-radius:14px;background:var(--surface)}
 .file.all{background:var(--butter)}
+.epfiles+.epfiles{margin-top:18px}
+.epfiles h4{margin:0 0 8px;display:flex;align-items:center;gap:8px;font:800 15px/1.3 var(--body)}
+.epfiles h4 b{flex:none;font:600 12px/1 var(--mono);background:var(--ink);color:var(--paper);padding:5px 9px;border-radius:20px}
 .ft{display:grid;place-items:center;width:46px;height:46px;border-radius:10px;border:2px solid var(--ink);font:500 12px/1 var(--mono);letter-spacing:.04em}
 .ft.PDF{background:var(--peach)} .ft.CSV{background:var(--sage)} .ft.SQL{background:var(--sky)} .ft.ZIP{background:var(--gold)} .ft.XLSX{background:var(--mint)} .ft.PBIX{background:var(--butter)}
 .file .nm{font:700 15px/1.25 var(--body);overflow-wrap:anywhere}

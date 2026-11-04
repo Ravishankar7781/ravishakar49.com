@@ -3,8 +3,8 @@
 -- The city column is case-sensitive on purpose (utf8mb4_bin), like most databases,
 -- so 'London' and 'london' count as two different values.
 
-CREATE DATABASE IF NOT EXISTS zero_to_analyst;
-USE zero_to_analyst;
+CREATE DATABASE IF NOT EXISTS shop;   -- the database from Ep 02
+USE shop;
 
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
