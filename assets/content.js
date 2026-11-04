@@ -6,6 +6,7 @@ window.SITE = {
   seasonStart: Date.UTC(2026, 10, 2, 0, 0, 0),          // Mon 2 Nov 2026, 00:00 UK time (GMT)
   epOpensH: [0, 61.5, 109.5],                           // Ep 1 opens with its week, Ep 2 Wed 13:30, Ep 3 Fri 13:30 UK (hours after Mon 00:00)
   week1Opens: Date.UTC(2026, 10, 1, 21, 0, 0),          // Week 1 opened early: Sun 1 Nov 2026, 21:00 UK time (weeks 2-12 keep their Monday dates)
+  epEarly: { '1-2': Date.UTC(2026, 10, 4, 2, 45, 0) },   // episodes opened early ('week-ep'): Week 1 Ep 2 opened Wed 4 Nov 02:45 UK instead of 13:30
   instagram: 'https://www.instagram.com/analytixai_/',
   instagramDM: 'https://ig.me/m/analytixai_',
   linkedin: 'https://www.linkedin.com/in/kurma-ravishankar',

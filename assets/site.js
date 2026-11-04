@@ -23,7 +23,8 @@
   // episodes inside a week open one at a time: Ep 1 with the week, Ep 2 on Wednesday, Ep 3 on Friday (SITE.epOpensH = hours after Monday 00:00)
   const EP_H = S.epOpensH || [0, 61.5, 109.5];
   const epDate = (n, k) => new Date(S.seasonStart + (n - 1) * WEEK + EP_H[k - 1] * 3600e3);
-  const epOpen = (n, k) => n <= unlocked() && (k === 1 || now() >= epDate(n, k).getTime());
+  const epEarly = (n, k) => (S.epEarly || {})[n + '-' + k] || Infinity;   // an episode can open early (SITE.epEarly)
+  const epOpen = (n, k) => n <= unlocked() && (k === 1 || now() >= Math.min(epDate(n, k).getTime(), epEarly(n, k)));
   const epNo = (w, i) => 'Ep ' + String((w.n - 1) * 3 + i + 1).padStart(2, '0');
   const epList = (w, d) => `<ol class="eps">${d.e.map((x, i) => epOpen(w.n, i + 1) ? `<li><b>${epNo(w, i)}</b> ${esc(x)}</li>` :
       `<li class="soon">${ICON.lock}<span>${epNo(w, i)} drops ${fmt(epDate(w.n, i + 1))}</span></li>`).join('')}</ol>`;
