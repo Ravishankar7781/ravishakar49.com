@@ -6,7 +6,7 @@ window.SITE = {
   seasonStart: Date.UTC(2026, 10, 2, 0, 0, 0),          // Mon 2 Nov 2026, 00:00 UK time (GMT)
   epOpensH: [0, 61.5, 109.5],                           // Ep 1 opens with its week, Ep 2 Wed 13:30, Ep 3 Fri 13:30 UK (hours after Mon 00:00)
   week1Opens: Date.UTC(2026, 10, 1, 21, 0, 0),          // Week 1 opened early: Sun 1 Nov 2026, 21:00 UK time (weeks 2-12 keep their Monday dates)
-  epEarly: { '1-2': Date.UTC(2026, 10, 4, 2, 45, 0) },   // episodes opened early ('week-ep'): Week 1 Ep 2 opened Wed 4 Nov 02:45 UK instead of 13:30
+  epEarly: { '1-2': Date.UTC(2026, 10, 4, 2, 45, 0), '1-3': Date.UTC(2026, 10, 5, 23, 15, 0) },   // episodes opened early ('week-ep'): Week 1 Ep 2 opened Wed 4 Nov 02:45 UK, Ep 3 Thu 5 Nov 23:15 UK, instead of 13:30
   instagram: 'https://www.instagram.com/analytixai_/',
   instagramDM: 'https://ig.me/m/analytixai_',
   linkedin: 'https://www.linkedin.com/in/kurma-ravishankar',
@@ -26,7 +26,9 @@ window.WEEKS = [
       { ep: 1, name: 'week1_orders.csv', href: 'files/week-01/week1_orders.csv', type: 'CSV', note: '40 orders from August 2026. Opens in Excel or Google Sheets' },
       { ep: 1, name: 'Week1_all_files.zip', href: 'files/week-01/Week1_all_files.zip', type: 'ZIP', note: 'All Ep 01 files in one download', all: true },
       { ep: 2, name: 'Ep02_Your_First_Database.pdf', href: 'files/week-01/Ep02_Your_First_Database.pdf', type: 'PDF', note: 'Ep 02 step sheet: set up MySQL Workbench, then make the shop database, with a quick check' },
-      { ep: 2, name: 'ep02_shop.sql', href: 'files/week-01/ep02_shop.sql', type: 'SQL', note: 'The three lines from the video: CREATE DATABASE shop, SHOW DATABASES, USE shop' }
+      { ep: 2, name: 'ep02_shop.sql', href: 'files/week-01/ep02_shop.sql', type: 'SQL', note: 'The three lines from the video: CREATE DATABASE shop, SHOW DATABASES, USE shop' },
+      { ep: 3, name: 'Ep03_Your_First_Table.pdf', href: 'files/week-01/Ep03_Your_First_Table.pdf', type: 'PDF', note: 'Ep 03 step sheet: make the orders table, fill it, see it, break it on purpose, then your turn with the answer' },
+      { ep: 3, name: 'ep03_orders.sql', href: 'files/week-01/ep03_orders.sql', type: 'SQL', note: 'Every line from the video: USE shop, CREATE TABLE orders, INSERT the 3 orders, SELECT' }
     ] },
   { n: 2,  mods: [2],    files: [] },
   { n: 3,  mods: [2],    files: [] },
