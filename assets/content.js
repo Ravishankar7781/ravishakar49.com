@@ -31,7 +31,10 @@ window.WEEKS = [
       { ep: 3, name: 'Ep03_Your_First_Table.pdf', href: 'files/week-01/Ep03_Your_First_Table.pdf', type: 'PDF', note: 'Ep 03 step sheet: make the orders table, fill it, see it, break it on purpose, then your turn with the answer' },
       { ep: 3, name: 'ep03_orders.sql', href: 'files/week-01/ep03_orders.sql', type: 'SQL', note: 'Every line from the video: USE shop, CREATE TABLE orders, INSERT the 3 orders, SELECT' }
     ] },
-  { n: 2,  mods: [2],    files: [] },
+  { n: 2,  mods: [2],    files: [
+      { ep: 1, name: 'Ep04_Pick_Columns_and_Do_Maths.pdf', href: 'files/week-02/Ep04_Pick_Columns_and_Do_Maths.pdf', type: 'PDF', note: 'Ep 04 step sheet: pick columns, then plus, AS, times and ROUND, break it on purpose, and your turn with the answer' },
+      { ep: 1, name: 'ep04_columns_and_maths.sql', href: 'files/week-02/ep04_columns_and_maths.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' }
+    ] },
   { n: 3,  mods: [2],    files: [] },
   { n: 4,  mods: [2],    project: 1, files: [] },
   { n: 5,  mods: [3],    files: [] },
