@@ -258,7 +258,8 @@ const SEASON_START = Date.UTC(2026, 10, 2, 0, 0, 0);   // Mon 2 Nov 2026 (UK is 
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 const WEEK1_OPENS = Date.UTC(2026, 10, 1, 21, 0, 0);  // Week 1 opened early: Sun 1 Nov, 21:00 UK time
 const EP_H = [0, 61.5, 109.5];                          // Ep 1 with its week, Ep 2 Wed 13:30, Ep 3 Fri 13:30 UK
-const unlockedNow = () => { const t = Date.now() - SEASON_START; const u = t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK_MS) + 1); return Math.max(u, Date.now() >= WEEK1_OPENS ? 1 : 0); };
+const WEEK_EARLY = {2: Date.UTC(2026, 10, 8, 18, 30, 0)};   // weeks opened early (week number): Week 2 on Sun 8 Nov, 18:30 UK time
+const unlockedNow = () => { const t = Date.now() - SEASON_START; const u = t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK_MS) + 1); const early = Object.keys(WEEK_EARLY).reduce((m, n) => Date.now() >= WEEK_EARLY[n] ? Math.max(m, +n) : m, 0); return Math.max(u, Date.now() >= WEEK1_OPENS ? 1 : 0, early); };
 const EP_EARLY = {'0-1': Date.UTC(2026, 10, 4, 2, 45, 0), '0-2': Date.UTC(2026, 10, 5, 23, 15, 0)};   // episodes opened early (week index-ep index): Week 1 Ep 2 on Wed 4 Nov 02:45 UK, Ep 3 on Thu 5 Nov 23:15 UK
 const epOpen = (i, k) => i < UNLOCKED_WEEKS && (k === 0 || Date.now() >= Math.min(SEASON_START + i * WEEK_MS + EP_H[k] * 3600e3, EP_EARLY[i + '-' + k] || Infinity));   // i = week index, k = 0..2
 const epDay = (i, k) => new Date(SEASON_START + i * WEEK_MS + EP_H[k] * 3600e3).toLocaleDateString('en-GB', {weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Europe/London'}).replace(',', '');

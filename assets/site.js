@@ -15,7 +15,8 @@
   /* ---- dates ---- */
   const now = () => Date.now();
   const unlocked = () => { const t = now() - S.seasonStart; const u = t < 0 ? 0 : Math.min(12, Math.floor(t / WEEK) + 1);
-    return Math.max(u, S.week1Opens && now() >= S.week1Opens ? 1 : 0); };   // week 1 can open early (SITE.week1Opens)
+    const early = Object.keys(S.weekEarly || {}).reduce((m, n) => now() >= S.weekEarly[n] ? Math.max(m, +n) : m, 0);   // any week can open early (SITE.weekEarly)
+    return Math.max(u, S.week1Opens && now() >= S.week1Opens ? 1 : 0, early); };   // week 1 can open early (SITE.week1Opens)
   const weekDate = n => new Date(S.seasonStart + (n - 1) * WEEK);
   const fmt = d => d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Europe/London' }).replace(',', '');
   const daysTo = d => Math.max(0, Math.ceil((d - now()) / DAY));
