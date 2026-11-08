@@ -1,5 +1,5 @@
 window.SIZES = {
- "files/Zero_to_Data_Analyst_Season1_Roadmap.pdf": "180 KB",
+ "files/Zero_to_Data_Analyst_Season1_Roadmap.pdf": "203 KB",
  "files/pack-01/AnalytixAI_SQL_Practice_Pack_01.pdf": "864 KB",
  "files/pack-01/Pack_01_all_files.zip": "493 KB",
  "files/pack-01/customers.csv": "31 KB",
@@ -10,7 +10,7 @@ window.SIZES = {
  "files/pack-02/customers.csv": "30 KB",
  "files/pack-02/orders.csv": "76 KB",
  "files/pack-02/sales_db_02.sql": "142 KB",
- "files/roadmap/Zero_to_Data_Analyst_Season1_Roadmap.pdf": "180 KB",
+ "files/roadmap/Zero_to_Data_Analyst_Season1_Roadmap.pdf": "203 KB",
  "files/week-01/Ep02_Your_First_Database.pdf": "100 KB",
  "files/week-01/Ep03_Your_First_Table.pdf": "80 KB",
  "files/week-01/Week1_Find_All_Five.pdf": "81 KB",
