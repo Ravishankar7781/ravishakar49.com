@@ -19,5 +19,7 @@ window.SIZES = {
  "files/week-01/ep03_orders.sql": "2 KB",
  "files/week-01/week1_orders.csv": "2 KB",
  "files/week-02/Ep04_Pick_Columns_and_Do_Maths.pdf": "90 KB",
- "files/week-02/ep04_columns_and_maths.sql": "2 KB"
+ "files/week-02/Ep05_WHERE_Pick_the_Rows.pdf": "83 KB",
+ "files/week-02/ep04_columns_and_maths.sql": "2 KB",
+ "files/week-02/ep05_where.sql": "2 KB"
 };
