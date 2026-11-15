@@ -35,7 +35,9 @@ window.WEEKS = [
       { ep: 1, name: 'Ep04_Pick_Columns_and_Do_Maths.pdf', href: 'files/week-02/Ep04_Pick_Columns_and_Do_Maths.pdf', type: 'PDF', note: 'Ep 04 step sheet: pick columns, then plus, AS, times and ROUND, break it on purpose, and your turn with the answer' },
       { ep: 1, name: 'ep04_columns_and_maths.sql', href: 'files/week-02/ep04_columns_and_maths.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' },
       { ep: 2, name: 'Ep05_WHERE_Pick_the_Rows.pdf', href: 'files/week-02/Ep05_WHERE_Pick_the_Rows.pdf', type: 'PDF', note: 'Ep 05 step sheet: WHERE with text, WHERE with numbers, break it on purpose, and your turn with the answer' },
-      { ep: 2, name: 'ep05_where.sql', href: 'files/week-02/ep05_where.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' }
+      { ep: 2, name: 'ep05_where.sql', href: 'files/week-02/ep05_where.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' },
+      { ep: 3, name: 'Ep06_AND_OR_IN.pdf', href: 'files/week-02/Ep06_AND_OR_IN.pdf', type: 'PDF', note: 'Ep 06 step sheet: AND, OR and IN with the row checks, the missing-column mistake, and your turn with the answer' },
+      { ep: 3, name: 'ep06_and_or_in.sql', href: 'files/week-02/ep06_and_or_in.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' }
     ] },
   { n: 3,  mods: [2],    files: [] },
   { n: 4,  mods: [2],    project: 1, files: [] },
