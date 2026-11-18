@@ -39,7 +39,10 @@ window.WEEKS = [
       { ep: 3, name: 'Ep06_AND_OR_IN.pdf', href: 'files/week-02/Ep06_AND_OR_IN.pdf', type: 'PDF', note: 'Ep 06 step sheet: AND, OR and IN with the row checks, the missing-column mistake, and your turn with the answer' },
       { ep: 3, name: 'ep06_and_or_in.sql', href: 'files/week-02/ep06_and_or_in.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' }
     ] },
-  { n: 3,  mods: [2],    files: [] },
+  { n: 3,  mods: [2],    files: [
+      { ep: 1, name: 'Ep07_BETWEEN_LIKE_ORDER_BY.pdf', href: 'files/week-03/Ep07_BETWEEN_LIKE_ORDER_BY.pdf', type: 'PDF', note: 'Ep 07 step sheet: BETWEEN, LIKE with %, ORDER BY and DESC, break it on purpose, and your turn with the answer' },
+      { ep: 1, name: 'ep07_between_like_order_by.sql', href: 'files/week-03/ep07_between_like_order_by.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' }
+    ] },
   { n: 4,  mods: [2],    project: 1, files: [] },
   { n: 5,  mods: [3],    files: [] },
   { n: 6,  mods: [3],    project: 2, files: [] },

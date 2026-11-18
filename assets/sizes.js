@@ -23,5 +23,7 @@ window.SIZES = {
  "files/week-02/Ep06_AND_OR_IN.pdf": "69 KB",
  "files/week-02/ep04_columns_and_maths.sql": "2 KB",
  "files/week-02/ep05_where.sql": "2 KB",
- "files/week-02/ep06_and_or_in.sql": "2 KB"
+ "files/week-02/ep06_and_or_in.sql": "2 KB",
+ "files/week-03/Ep07_BETWEEN_LIKE_ORDER_BY.pdf": "76 KB",
+ "files/week-03/ep07_between_like_order_by.sql": "2 KB"
 };
