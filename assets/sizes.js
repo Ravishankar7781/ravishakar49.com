@@ -25,5 +25,7 @@ window.SIZES = {
  "files/week-02/ep05_where.sql": "2 KB",
  "files/week-02/ep06_and_or_in.sql": "2 KB",
  "files/week-03/Ep07_BETWEEN_LIKE_ORDER_BY.pdf": "76 KB",
- "files/week-03/ep07_between_like_order_by.sql": "2 KB"
+ "files/week-03/ep07_between_like_order_by.sql": "2 KB",
+ "files/week-03/Ep08_COUNT_SUM_AVG_GROUP_BY.pdf": "73 KB",
+ "files/week-03/ep08_count_sum_avg_group_by.sql": "2 KB"
 };

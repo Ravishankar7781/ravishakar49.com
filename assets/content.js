@@ -41,7 +41,9 @@ window.WEEKS = [
     ] },
   { n: 3,  mods: [2],    files: [
       { ep: 1, name: 'Ep07_BETWEEN_LIKE_ORDER_BY.pdf', href: 'files/week-03/Ep07_BETWEEN_LIKE_ORDER_BY.pdf', type: 'PDF', note: 'Ep 07 step sheet: BETWEEN, LIKE with %, ORDER BY and DESC, break it on purpose, and your turn with the answer' },
-      { ep: 1, name: 'ep07_between_like_order_by.sql', href: 'files/week-03/ep07_between_like_order_by.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' }
+      { ep: 1, name: 'ep07_between_like_order_by.sql', href: 'files/week-03/ep07_between_like_order_by.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' },
+      { ep: 2, name: 'Ep08_COUNT_SUM_AVG_GROUP_BY.pdf', href: 'files/week-03/Ep08_COUNT_SUM_AVG_GROUP_BY.pdf', type: 'PDF', note: 'Ep 08 step sheet: three more orders, COUNT, SUM, AVG, GROUP BY, WHERE vs HAVING, and your turn with the answer' },
+      { ep: 2, name: 'ep08_count_sum_avg_group_by.sql', href: 'files/week-03/ep08_count_sum_avg_group_by.sql', type: 'SQL', note: 'Every line from the video, including the 3 new orders; safe to run even if you added Bristol in Ep 03' }
     ] },
   { n: 4,  mods: [2],    project: 1, files: [] },
   { n: 5,  mods: [3],    files: [] },
