@@ -43,7 +43,9 @@ window.WEEKS = [
       { ep: 1, name: 'Ep07_BETWEEN_LIKE_ORDER_BY.pdf', href: 'files/week-03/Ep07_BETWEEN_LIKE_ORDER_BY.pdf', type: 'PDF', note: 'Ep 07 step sheet: BETWEEN, LIKE with %, ORDER BY and DESC, break it on purpose, and your turn with the answer' },
       { ep: 1, name: 'ep07_between_like_order_by.sql', href: 'files/week-03/ep07_between_like_order_by.sql', type: 'SQL', note: 'Every line from the video, and it makes the orders table for you if you missed Ep 03' },
       { ep: 2, name: 'Ep08_COUNT_SUM_AVG_GROUP_BY.pdf', href: 'files/week-03/Ep08_COUNT_SUM_AVG_GROUP_BY.pdf', type: 'PDF', note: 'Ep 08 step sheet: the new spends table, COUNT, SUM, AVG, GROUP BY, WHERE vs HAVING, and your turn with the answer' },
-      { ep: 2, name: 'ep08_count_sum_avg_group_by.sql', href: 'files/week-03/ep08_count_sum_avg_group_by.sql', type: 'SQL', note: 'Every line from the video, and it makes the new spends table for you' }
+      { ep: 2, name: 'ep08_count_sum_avg_group_by.sql', href: 'files/week-03/ep08_count_sum_avg_group_by.sql', type: 'SQL', note: 'Every line from the video, and it makes the new spends table for you' },
+      { ep: 3, name: 'Ep09_JOINs_and_NULL.pdf', href: 'files/week-03/Ep09_JOINs_and_NULL.pdf', type: 'PDF', note: 'Ep 09 step sheet: the budgets table, JOIN with ON, LEFT JOIN, NULL, = NULL vs IS NULL, and your turn with the answer' },
+      { ep: 3, name: 'ep09_join_null.sql', href: 'files/week-03/ep09_join_null.sql', type: 'SQL', note: 'Every line from the video, and it makes the spends table for you if you missed Ep 08' }
     ] },
   { n: 4,  mods: [2],    project: 1, files: [] },
   { n: 5,  mods: [3],    files: [] },
