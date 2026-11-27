@@ -47,7 +47,10 @@ window.WEEKS = [
       { ep: 3, name: 'Ep09_JOINs_and_NULL.pdf', href: 'files/week-03/Ep09_JOINs_and_NULL.pdf', type: 'PDF', note: 'Ep 09 step sheet: the budgets table, JOIN with ON, LEFT JOIN, NULL, = NULL vs IS NULL, and your turn with the answer' },
       { ep: 3, name: 'ep09_join_null.sql', href: 'files/week-03/ep09_join_null.sql', type: 'SQL', note: 'Every line from the video, and it makes the spends table for you if you missed Ep 08' }
     ] },
-  { n: 4,  mods: [2],    project: 1, files: [] },
+  { n: 4,  mods: [2],    project: 1, files: [
+      { ep: 1, name: 'Ep10_CASE_WHEN_and_CTEs.pdf', href: 'files/week-04/Ep10_CASE_WHEN_and_CTEs.pdf', type: 'PDF', note: 'Ep 10 step sheet: CASE WHEN big or small, a CTE with WITH totals AS, why a CTE vanishes after one query, and your turn with the answer' },
+      { ep: 1, name: 'ep10_case_when_cte.sql', href: 'files/week-04/ep10_case_when_cte.sql', type: 'SQL', note: 'Every line from the video, and it makes the spends table for you if you missed Ep 08' }
+    ] },
   { n: 5,  mods: [3],    files: [] },
   { n: 6,  mods: [3],    project: 2, files: [] },
   { n: 7,  mods: [4],    files: [] },
