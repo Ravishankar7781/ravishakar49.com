@@ -46,8 +46,8 @@ window.WEEKS = [
       { ep: 2, name: 'ep08_count_sum_avg_group_by.sql', href: 'files/week-03/ep08_count_sum_avg_group_by.sql', type: 'SQL', note: 'Every line from the video, and it makes the new spends table for you' },
       { ep: 3, name: 'Ep09_JOINs_and_NULL.pdf', href: 'files/week-03/Ep09_JOINs_and_NULL.pdf', type: 'PDF', note: 'Ep 09 step sheet: the budgets table, JOIN with ON, LEFT JOIN, NULL, = NULL vs IS NULL, and your turn with the answer' },
       { ep: 3, name: 'ep09_join_null.sql', href: 'files/week-03/ep09_join_null.sql', type: 'SQL', note: 'Every line from the video, and it makes the spends table for you if you missed Ep 08' },
-      { ep: 3, name: 'Ep09_bonus_JOIN_cheat_sheet.pdf', href: 'files/week-03/Ep09_bonus_JOIN_cheat_sheet.pdf', type: 'PDF', note: 'Bonus: every JOIN on one page. INNER, LEFT, RIGHT, FULL OUTER (with UNION), CROSS and SELF JOIN, with pictures' },
-      { ep: 3, name: 'ep09_bonus_other_joins.sql', href: 'files/week-03/ep09_bonus_other_joins.sql', type: 'SQL', note: 'Bonus: RIGHT JOIN, FULL OUTER JOIN, the forgotten-ON CROSS JOIN and a SELF JOIN, ready to run' }
+      { ep: 3, bonus: 'The other JOINs: RIGHT, FULL OUTER, CROSS and SELF', name: 'Ep09_bonus_JOIN_cheat_sheet.pdf', href: 'files/week-03/Ep09_bonus_JOIN_cheat_sheet.pdf', type: 'PDF', note: 'Bonus: every JOIN on one page. INNER, LEFT, RIGHT, FULL OUTER (with UNION), CROSS and SELF JOIN, with pictures' },
+      { ep: 3, bonus: 'The other JOINs: RIGHT, FULL OUTER, CROSS and SELF', name: 'ep09_bonus_other_joins.sql', href: 'files/week-03/ep09_bonus_other_joins.sql', type: 'SQL', note: 'Bonus: RIGHT JOIN, FULL OUTER JOIN, the forgotten-ON CROSS JOIN and a SELF JOIN, ready to run' }
     ] },
   { n: 4,  mods: [2],    project: 1, files: [
       { ep: 1, name: 'Ep10_CASE_WHEN_and_CTEs.pdf', href: 'files/week-04/Ep10_CASE_WHEN_and_CTEs.pdf', type: 'PDF', note: 'Ep 10 step sheet: CASE WHEN big or small, a CTE with WITH totals AS, why a CTE vanishes after one query, and your turn with the answer' },
